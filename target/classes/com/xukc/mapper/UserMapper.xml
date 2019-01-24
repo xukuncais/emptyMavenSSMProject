@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xukc.mapper.UserMapper" >
+	<resultMap id="userMap" type="com.xukc.entity.User" >
+		<id column="user_id" property="userId"/>
+		<id column="user_name" property="userName"/>
+		<id column="age" property="age"/>
+	</resultMap>
+	 
+	<select id="selectUserById" parameterType="java.lang.Long" resultType="com.xukc.entity.User">
+		select t.user_id userId,t.user_name userName,t.age age from user t where t.user_Id = #{userId}
+	</select>
+	<select id="selectUserList" parameterType="hashmap" resultMap="userMap">
+		select t.* from user t
+	</select>
+	
+</mapper>
